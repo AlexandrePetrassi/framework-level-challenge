@@ -37,6 +37,10 @@ public class CreateUser {
     this.surname = surname;
   }
 
+  public String getFullName() {
+    return name + " " + surname;
+  }
+
   public String buildBody() {
     return String.format(USER_AND_JOB_JSON_TEMPLATE, name, job);
   }

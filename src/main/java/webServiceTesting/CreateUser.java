@@ -46,6 +46,6 @@ public class CreateUser {
   }
 
   public String buildBodyWithSurname() {
-    return null;
+    return String.format(USER_AND_JOB_JSON_TEMPLATE, getFullName(), job);
   }
 }

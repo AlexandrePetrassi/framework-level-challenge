@@ -5,6 +5,11 @@ import io.restassured.specification.RequestSpecification;
 
 public class CreateUser {
 
+  private static final String USER_AND_JOB_JSON_TEMPLATE = "{\n" +
+          "    \"name\": \"%s\",\n" +
+          "    \"job\": \"%s\"\n" +
+          "}";
+
   private String name;
   private String job;
   private final RequestSpecification requestSpecification;
@@ -28,7 +33,7 @@ public class CreateUser {
   }
 
   public String buildBody() {
-    return null;
+    return String.format(USER_AND_JOB_JSON_TEMPLATE, name, job);
   }
 
   public String buildBodyWithSurname() {

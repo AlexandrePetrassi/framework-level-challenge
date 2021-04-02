@@ -12,6 +12,7 @@ public class CreateUser {
 
   private String name;
   private String job;
+  private String surname = "autoSurname";
   private final RequestSpecification requestSpecification;
 
   public CreateUser() {
@@ -30,6 +31,10 @@ public class CreateUser {
 
   public void setJob(String job) {
     this.job = job;
+  }
+
+  public void setSurname(String surname) {
+    this.surname = surname;
   }
 
   public String buildBody() {

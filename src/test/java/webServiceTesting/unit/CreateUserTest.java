@@ -18,6 +18,11 @@ public class CreateUserTest {
       "    \"job\": \"testJob\"\n" +
       "}";
 
+  String jsonWithUserNameCustomSurnameAndJob = "{\n" +
+      "    \"name\": \"testName customSurname\",\n" +
+      "    \"job\": \"testJob\"\n" +
+      "}";
+
   @Before
   public void setup() {
     createUser.setName("testName");
@@ -32,6 +37,12 @@ public class CreateUserTest {
   @Test
   public void buildBodyWithSurname_validUserAndJob_shouldReturnJsonWithUserNameSurnameAndJob() {
     Assert.assertEquals(jsonWithUserNameSurnameAndJob, createUser.buildBodyWithSurname());
+  }
+
+  @Test
+  public void buildBodyWithSurname_validUserSurnameAndJob_shouldReturnJsonWithUserNameSurnameAndJob() {
+    createUser.setSurname("customSurname");
+    Assert.assertEquals(jsonWithUserNameCustomSurnameAndJob, createUser.buildBodyWithSurname());
   }
 
 }

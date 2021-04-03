@@ -1,12 +1,12 @@
 package browserTesting;
 
-
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public class Steps {
@@ -15,7 +15,11 @@ public class Steps {
 
     @Given("^I open Chrome and launch the application$")
     public void openChromeAndLaunchApplication()
-    {}
+    {
+        System.setProperty("webdriver.chrome.driver", "C:/WebDriver/bin/chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.get("https://qa-automation-challenge.github.io/sandbox/");
+    }
 
     @When("^I select type \"(.*)\"$")
     public void selectType(String type)

@@ -1,3 +1,9 @@
+# Technical Debts
+
+* browserTesting.Steps
+  * Change the hard coded webdriver path
+  * Change the hard coded app URL
+
 # Challenge
 
 ## Requirements

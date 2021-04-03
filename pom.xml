@@ -6,6 +6,9 @@
     <version>1.2</version>
     <name>qa-challenge</name>
     <properties>
+        <project.build.sourceEnconding>UTF-8</project.build.sourceEnconding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <cucumber-java.version>1.2.5</cucumber-java.version>
         <selenium-java.verison>3.141.59</selenium-java.verison>
         <junit.version>4.13</junit.version>

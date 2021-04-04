@@ -2,6 +2,7 @@ package webServiceTesting;
 
 
 import cucumber.api.DataTable;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -69,8 +70,8 @@ public class Steps {
               .post();
   }
 
-  @Then("^I validate that is not possible to submit a register without password$")
-  public void validateCannotRegisterWithoutPassword() {
-    response.then().statusCode(400);
+  @Then("^I validate the status code is (\\d+)$")
+  public void validateTheStatusCodeIs(int statusCode) {
+    response.then().statusCode(statusCode);
   }
 }

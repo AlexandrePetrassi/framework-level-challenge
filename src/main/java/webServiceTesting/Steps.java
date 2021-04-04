@@ -68,4 +68,9 @@ public class Steps {
             .when()
               .post();
   }
+
+  @Then("^I validate that is not possible to submit a register without password$")
+  public void validateCannotRegisterWithoutPassword() {
+    response.then().statusCode(400);
+  }
 }

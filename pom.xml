@@ -84,6 +84,12 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <systemPropertyVariables>
+                        <extent.reporter.spark.start>true</extent.reporter.spark.start>
+                        <extent.reporter.spark.out>target/report/integration/report.html</extent.reporter.spark.out>
+                    </systemPropertyVariables>
+                </configuration>
             </plugin>
         </plugins>
     </build>

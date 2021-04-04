@@ -88,6 +88,7 @@
                     <systemPropertyVariables>
                         <extent.reporter.spark.start>true</extent.reporter.spark.start>
                         <extent.reporter.spark.out>target/report/integration/report.html</extent.reporter.spark.out>
+                        <cucumber.publish.quiet>true</cucumber.publish.quiet>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>

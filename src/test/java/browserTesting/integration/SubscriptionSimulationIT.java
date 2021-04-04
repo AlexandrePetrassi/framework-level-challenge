@@ -9,7 +9,8 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = {"classpath:features"},
         glue = {"browserTesting"},
-        tags = "@SubscriptionSimulation"
+        tags = "@SubscriptionSimulation",
+        plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
 )
 public class SubscriptionSimulationIT {
 }

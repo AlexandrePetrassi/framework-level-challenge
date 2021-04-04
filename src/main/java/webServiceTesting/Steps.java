@@ -1,16 +1,22 @@
 package webServiceTesting;
 
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+
+import java.util.Map;
 
 public class Steps {
 
   CreateUser createUser;
+  RegisterUser registerUser;
   String name, job;
   String user = "2";
+  Response response;
 
   @Given("^I use user creation service$")
   public void useUserCreationWebService() {
@@ -48,5 +54,18 @@ public class Steps {
               .delete("/{user}", user)
             .then()
               .statusCode(204);
+  }
+
+  @When("^I post a request with a new register without password$")
+  public void postRegisterWithoutPassword(DataTable table) {
+    Map<String, String> data = table.asMap(String.class, String.class);
+    registerUser = new RegisterUser();
+    registerUser.setEmail(data.get("email"));
+    response = registerUser.getRequestSpecification()
+            .given()
+              .body(registerUser.buildBodyWithoutPassword())
+              .contentType(ContentType.JSON)
+            .when()
+              .post();
   }
 }

@@ -3,7 +3,7 @@
 * browserTesting.Steps
   * Change the hard coded webdriver path
   * Change the hard coded app URL
-
+  
 * features.browser.product.SubscriptionSimulation
   * Split request and validation from steps:
     * I validate my response is correct
@@ -13,6 +13,8 @@
   * Response body is not validated at scenarios:
     * Add user with job
     * Delete User
+  * Step `I post a request with a new register without password` should be split
+  since it is setting data and making requests.
   
 # Challenge
 

@@ -15,3 +15,8 @@ Feature: User Creation
 
   Scenario: Delete user
     Then I validate the user was deleted
+
+  Scenario: Submit a new register without password
+    When I post a request with a new register without password
+      | email    | challenge@automation.com |
+    Then I validate that is not possible to submit a register without password

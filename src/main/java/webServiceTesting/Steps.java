@@ -2,21 +2,28 @@ package webServiceTesting;
 
 
 import cucumber.api.DataTable;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
+import java.util.List;
 import java.util.Map;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
 public class Steps {
+
+  private static final int REQUEST_CAP = 1000;
 
   CreateUser createUser;
   RegisterUser registerUser;
   String name, job;
   String user = "2";
+  String email;
   Response response;
 
   @Given("^I use user creation service$")
@@ -61,7 +68,8 @@ public class Steps {
   public void postRegisterWithoutPassword(DataTable table) {
     Map<String, String> data = table.asMap(String.class, String.class);
     registerUser = new RegisterUser();
-    registerUser.setEmail(data.get("email"));
+    this.email = data.get("email");
+    registerUser.setEmail(email);
     response = registerUser.getRequestSpecification()
             .given()
               .body(registerUser.buildBodyWithoutPassword())
@@ -73,5 +81,24 @@ public class Steps {
   @Then("^I validate the status code is (\\d+)$")
   public void validateTheStatusCodeIs(int statusCode) {
     response.then().statusCode(statusCode);
+  }
+
+  @Then("^I validate the register is not created$")
+  public void validateRegisterNotCreated() {
+    for(int currentPage = 1; currentPage < REQUEST_CAP; ++currentPage) {
+      List<String> emails = RestAssured
+              .given()
+                .baseUri("https://reqres.in/api")
+                .basePath("/users")
+                .queryParam("page", currentPage)
+              .when()
+                .get()
+              .then()
+                .extract()
+                .jsonPath()
+                .getList("data.email");
+      if (emails.isEmpty()) return;
+      assertThat(emails, not(hasItem(email)));
+    }
   }
 }

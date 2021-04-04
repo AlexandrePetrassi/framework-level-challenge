@@ -4,6 +4,16 @@
   * Change the hard coded webdriver path
   * Change the hard coded app URL
 
+* features.browser.product.SubscriptionSimulation
+  * Split request and validation from steps:
+    * I validate my response is correct
+    * I validate the user was deleted
+  * Validation steps are too generic and should not be reused between completely
+    different test cases
+  * Response body is not validated at scenarios:
+    * Add user with job
+    * Delete User
+  
 # Challenge
 
 ## Requirements

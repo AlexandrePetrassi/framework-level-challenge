@@ -15,3 +15,9 @@ Feature: User Creation
 
   Scenario: Delete user
     Then I validate the user was deleted
+
+  Scenario: Submit a new register without password
+    When I post a request with a new register without password
+      | email    | challenge@automation.com |
+    Then I validate the register is not created
+    And I validate the status code is 400

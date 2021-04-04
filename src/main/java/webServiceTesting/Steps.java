@@ -10,6 +10,7 @@ public class Steps {
 
   CreateUser createUser;
   String name, job;
+  String user = "2";
 
   @Given("^I use user creation service$")
   public void useUserCreationWebService() {
@@ -38,5 +39,14 @@ public class Steps {
               .post()
             .then()
               .statusCode(201);
+  }
+
+  @Then("^I validate the user was deleted$")
+  public void validateTheUserWasDeleted() {
+    createUser.getRequestSpecification()
+            .when()
+              .delete("/{user}", user)
+            .then()
+              .statusCode(204);
   }
 }

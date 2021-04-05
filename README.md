@@ -1,3 +1,11 @@
+# Github Pages
+  The test execution report is hosted on GitHub Pages through the link:
+
+    https://alexandrepetrassi.github.io/framework-level-challenge/#
+
+  The report generation took place by manually triggering `mvn clean install`
+  and committing the result to its proper branch.
+
 # Technical Debts
 
 * browserTesting.Steps

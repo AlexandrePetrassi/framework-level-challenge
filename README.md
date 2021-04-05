@@ -5,6 +5,9 @@
 
   The report generation took place by manually triggering `mvn clean install`
   and committing the result to its proper branch.
+  
+  * For more information about the report, visit the `Releases` page:
+    https://github.com/AlexandrePetrassi/framework-level-challenge/releases
 
 # Technical Debts
 
